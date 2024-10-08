@@ -1,0 +1,39 @@
+import random
+def mainscreen():
+    print("Welcome to the bird game!")
+    print("To start click the Enter button")
+    input()
+    print("Game is starting!")
+def game():
+    player_name = input("Write your name: ")
+    point = 0
+    bird_height = 5
+    game_on = True
+    while game_on:
+        barrier_height = random.randint(1, 10) 
+        print(f"Barrier height: {barrier_height}")
+        print(f"Bird height: {bird_height}")
+        movement = input("Use Enter to fly: ")
+        if movement == "":
+            bird_height += 1
+        else:
+            bird_height -= 1  
+        if bird_height <= 0:
+            print("The bird has crashed! Game over.")
+            game_on = False
+        elif bird_height > 10:
+            print("The bird flew too high and got lost! Game over.")
+            game_on = False
+        if bird_height == barrier_height:
+            print("The bird crashed into the barrier! Game over.")
+            game_on = False
+        else:
+            point += 1 
+            print(f"Your total point is: {point}")
+    play_again = input("Press Enter to play again or any key to if you want to exit: ")
+    if play_again == "":
+        game()
+    else:
+        print("Thx for playing my game!!!")
+mainscreen()
+game() 
